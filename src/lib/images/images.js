@@ -86,6 +86,6 @@ export const oldsites = [
 import boring from './projects/boring.webp';
 import peek from './projects/peek.webp';
 import petrichor from './projects/petrichor.webp';
-import aiw from './projects/aiw.webp';
+import postcards from './projects/postcards.webp';
 
-export {boring, peek, petrichor, aiw};
+export {boring, peek, petrichor, postcards};

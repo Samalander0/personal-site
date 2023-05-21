@@ -706,6 +706,8 @@ header {
       
       img {
         width: 39vw;
+        aspect-ratio: 16/9;
+        object-fit: cover;
         border-radius: 10px;
         border: 1px solid black;
 
@@ -717,6 +719,15 @@ header {
         }
         @media (max-width: 600px) {
           width: 100%;
+        }
+
+        animation-name: image-up;
+        animation-duration: 20s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        @keyframes image-up {
+          from {object-position: bottom;}
+          to {object-position: top;}
         }
       }
       .project-title {
@@ -745,18 +756,31 @@ header {
 
       &:nth-of-type(2) {
         animation-delay: 5s;
+        img {
+          animation-delay: 5s;
+        }
       }
       &:nth-of-type(3) {
         animation-delay: 10s;
+        img {
+          animation-delay: 10s;
+        }
       }
       &:nth-of-type(4) {
         animation-delay: 15s;
+        img {
+          animation-delay: 15s;
+        }
       }
     }
 
     &:has(.project:hover) {
       .project {
         animation-play-state: paused;
+
+        img {
+          animation-play-state: paused;
+        }
       }
     }
   }
