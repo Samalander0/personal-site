@@ -24,8 +24,8 @@ body {
   place-items: center;
 }
 
-@mixin drop-in($duration, $delay) {
-  animation-name: drop-in;
+@mixin fade-up($duration, $delay) {
+  animation-name: fade-up;
   animation-duration: $duration;
   animation-delay: $delay;
   animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
@@ -33,13 +33,13 @@ body {
   transform: translateY(1em);
   opacity: 0;
 }
-@keyframes drop-in {
+@keyframes fade-up {
   from {
-    transform: translateY(1em) rotate(5deg);
-    opacity: 0.25;
+    transform: translateY(1em);
+    opacity: 0;
   }
   to {
-    transform: translateY(0) rotate(0deg);
+    transform: translateY(0);
     opacity: 1;
   }
 }
@@ -118,7 +118,7 @@ nav {
       }
     }
 
-    @include animate(pop, 1.5s, 6s);
+    @include fade-up(1.5s, 2.5s);
     transform: scale(0);
 
     span {
@@ -154,10 +154,10 @@ nav {
 
       @include animate(pop, 1s, 8s);
       transform: scale(0);
-      &:nth-of-type(1) {animation-delay: 6.25s;}
-      &:nth-of-type(2) {animation-delay: 6.5s;}
-      &:nth-of-type(3) {animation-delay: 6.75s;}
-      &:nth-of-type(4) {animation-delay: 7s;}
+      &:nth-of-type(1) {animation-delay: 2.75s;}
+      &:nth-of-type(2) {animation-delay: 3s;}
+      &:nth-of-type(3) {animation-delay: 3.25s;}
+      &:nth-of-type(4) {animation-delay: 3.5s;}
 
       transition: 0.2s ease-out;
       opacity: 0.75;
@@ -309,7 +309,7 @@ header {
         margin: -0.85em 0 -0.25em 0;
 
         .highlight::before {
-          @include reveal(2s, 4s);
+          @include reveal(2s, 1.25s);
         }
       }
       .yours-wrapper {
@@ -317,29 +317,31 @@ header {
         margin-top: -0.2em;
 
         .highlight::before {
-          @include reveal(2s, 4.5s);
+          @include reveal(2s, 1.5s);
         }
       }
-    }
-    @media (min-width: 800px) {
-      $duration: 1.5s;
-      .line:nth-of-type(1) {
-        .wrapper:nth-of-type(1) .content {
-          @include drop-in($duration, 1s);
-        }
-        .wrapper:nth-of-type(2) .content {
-          @include drop-in($duration, 1.5s);
-        }
-        .wrapper:nth-of-type(3) .content {
-          @include drop-in($duration, 2s);
+
+      &:nth-of-type(1) {
+        .wrapper {
+          &:nth-of-type(1) .content {
+            @include fade-up(1.5s, 0.5s)
+          }
+          &:nth-of-type(2) .content {
+            @include fade-up(1.5s, 0.6s)
+          }
+          &:nth-of-type(3) .content {
+            @include fade-up(1.5s, 0.7s)
+          }
         }
       }
-      .line:nth-of-type(2) {
-        .wrapper:nth-of-type(1) .content {
-          @include drop-in($duration, 2.5s);
-        }
-        .wrapper:nth-of-type(2) .content {
-          @include drop-in($duration, 3s);
+      &:nth-of-type(2) {
+        .wrapper { 
+          &:nth-of-type(1) .content {
+            @include fade-up(1.5s, 0.9s)
+          }
+          &:nth-of-type(2) .content {
+            @include fade-up(1.5s, 1s)
+          }
         }
       }
     }
@@ -388,21 +390,21 @@ header {
             left: 1.5em;
             top: -0.1em;
             transform: rotate(15deg);
-            @include animate(emoji-in1, 1s, 5.25s);
+            @include animate(emoji-in1, 1s, 2.25s);
           }
           &:nth-of-type(2) {
             width: 0;
             z-index: 2;
             top: -0.4em;
             transform: rotate(-30deg);
-            @include animate(emoji-in2, 1s, 5s);
+            @include animate(emoji-in2, 1s, 2s);
           }
           &:nth-of-type(3) {
             width: 0;
             right: 1.6em;
             bottom: -0.1em;
             transform: rotate(30deg);
-            @include animate(emoji-in3, 1s, 5.5s);
+            @include animate(emoji-in3, 1s, 2.5s);
           }
 
           @media (max-width: 800px) {
@@ -442,7 +444,7 @@ header {
           width: 0;
           top: -0.2em;
           transition: transform 0.25s cubic-bezier(0.33, 1, 0.68, 1);
-          @include animate(emoji-in2, 1s, 5.75s);
+          @include animate(emoji-in2, 1s, 2.75s);
         }
 
         &:hover {
@@ -475,7 +477,7 @@ header {
       transition-delay: 0.3s;
     }
 
-    @include animate(arrow-down, 1s, 7.5s);
+    @include animate(arrow-down, 1s, 4s);
     opacity: 0;
     transition: 0.3s ease-out;
 
@@ -630,6 +632,7 @@ header {
     
     .small {
       color: white;
+      display: block;
       font-size: 4.5rem;
 
       -webkit-text-stroke: 0.5px #6DCDFF;
@@ -659,6 +662,7 @@ header {
     img {
       width: 35vmax;
       position: relative;
+      border-radius: 10px;
     }
     @for $i from 1 through 10 {
       img:nth-of-type(#{$i}) {
@@ -905,6 +909,16 @@ header {
       }
       input:not([type="submit"]), textarea {
         border-bottom: 1px solid black;
+        transition: 0.2s ease-out;
+        
+        &:hover {
+          border-color: #005c83;
+        }
+        &:focus {
+          outline: none;
+          border-color: #00a6ed;
+          color: #003e58;
+        }
       }
       input:not([type="submit"]) {
         @media (max-width: 500px) {
@@ -917,11 +931,13 @@ header {
         background: black;
         color: white;
         border-radius: 5rem;
-        padding: 0.3rem 1rem 0.2rem 1rem;
-        margin-top: 0.5rem;
+        padding: 0.6rem 1.5rem 0.4rem 1.5rem;
+        margin-top: 0.75rem;
+        transition: 0.2s ease-out;
 
         &:hover {
           cursor: pointer;
+          transform: scale(0.9) rotate(-5deg);
         }
       }
       textarea {

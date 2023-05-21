@@ -90,6 +90,7 @@
     }, "<")
     .from("#about .line-1", {
       opacity: 0,
+      y: "0.5em",
       duration: 1
     })
     .from("#about .line-1 .highlight", {
@@ -98,6 +99,7 @@
     }, "<")
     .from("#about .line-2", {
       opacity: 0,
+      y: "0.5em",
       duration: 1
     })
     .from("#about .line-2 .highlight", {
@@ -106,6 +108,7 @@
     }, "<")
     .from("#about .line-3", {
       opacity: 0,
+      y: "0.5em",
       duration: 1
     })
     .from("#about .line-3 .highlight", {
@@ -119,10 +122,12 @@
     }, "<")
     .from("#about .line-4", {
       opacity: 0,
+      y: "0.5em",
       duration: 1
     })
     .from("#about .line-5", {
       opacity: 0,
+      y: "0.5em",
       duration: 1
     })
     .from("#about .line-5 .highlight", {
@@ -141,10 +146,12 @@
     })
     .from("#past-sites .small", {
       opacity: 0,
+      y: "0.25em",
       duration: 1,
     })
     .from("#past-sites .big", {
       opacity: 0,
+      y: "0.25em",
       duration: 1,
     })
     .from("#past-sites .images", {
@@ -160,6 +167,9 @@
       marginRight: "-35vmax",
       duration: 2,
     }, "<")
+    .to("#about", {
+      duration: 0.5
+    })
     ScrollTrigger.create({
       trigger: "#about-scroll-section",
       animation: aboutTimeline,
