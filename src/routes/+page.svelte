@@ -44,7 +44,7 @@
     smoother = ScrollSmoother.create({
       smooth: 0.5,
       effects: true,  
-      smoothTouch: 0.1,
+      smoothTouch: 0,
     });
 
     gsap.to("#header .line-1", {
@@ -139,7 +139,7 @@
     })
     .to("#about", {
       clipPath: "polygon(0 50%, 100% 50%, 100% 50%, 0 50%)",
-      duration: 2,
+      duration: 1.5,
     })
     .to("#about", {
       duration: 0.5
@@ -174,7 +174,7 @@
       trigger: "#about-scroll-section",
       animation: aboutTimeline,
       start: "top top",
-      end: "+=4500vh",
+      end: "+=4000vh",
       scrub: 0.5,
       pin: true,
     })  
@@ -356,13 +356,14 @@
             </div>
           </div>
         </div>
-        <form name="contact-form" acceptCharset="utf-8" action="https://getform.io/f/5f6698d1-3659-4132-9fd1-5ed5854b9740" method="post">
+        <form name="contact-form" acceptCharset="utf-8" action="https://formsubmit.co/sam@samalander.dev" method="post">
           <fieldset>
             <input type="text" name="name" id="your-name" placeholder="Name" required/>
             <input type="email" name="email" id="your-email" placeholder="Email" required/>
           </fieldset>
           <textarea name="message" id="message" placeholder="Message" required/>
           <input type="submit" value="Submit"/>
+          <input type="hidden" name="_next" value="https://www.samalander.dev">
         </form>
       </div>
     </div>
