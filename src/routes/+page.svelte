@@ -356,7 +356,7 @@
             </div>
           </div>
         </div>
-        <form name="contact-form" acceptCharset="utf-8" action="https://formsubmit.co/sam@samalander.dev" method="post">
+        <form name="contact-form" acceptCharset="utf-8" action="https://formsubmit.co/contact@samalander.dev" method="post">
           <fieldset>
             <input type="text" name="name" id="your-name" placeholder="Name" required/>
             <input type="email" name="email" id="your-email" placeholder="Email" required/>
