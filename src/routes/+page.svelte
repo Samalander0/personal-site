@@ -41,16 +41,10 @@
   let smoother;
   let aboutTimeline = gsap.timeline();
   onMount(() => {
-    if (window.innerHeight >= 900) { // Only normalize scroll if mobile
+    if (window.innerWidth >= 900) { // Only use scrollSmoother if on a large enough page
       smoother = ScrollSmoother.create({
         smooth: 0.5,
         effects: true,  
-      });
-    } else {
-      smoother = ScrollSmoother.create({
-        smooth: 0.5,
-        effects: true,  
-        normalizeScroll: true
       });
     }
 
@@ -195,7 +189,7 @@
         animation: aboutTimeline,
         start: "top top",
         end: "+=2000vh",
-        scrub: 0.5,
+        scrub: true,
         pin: true,
       })  
     }
