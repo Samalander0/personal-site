@@ -95,14 +95,14 @@ body {
 // //
 
 nav {
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100vw;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2.5vmax 5vmax;
+  padding: max(2rem, 2.5vmax) 5vmax;
   z-index: 500;
 
   #title {
@@ -579,7 +579,7 @@ header {
       }
 
       @media (max-width: 800px) {
-        line-height: 1.75;
+        line-height: 1.5;
       }
 
       .line {
@@ -627,7 +627,9 @@ header {
 
   h2 {
     text-transform: uppercase;
-    position: absolute;
+    @media (min-width: 800px) {
+      position: absolute;
+    }
     font-weight: 900;
     
     .small {
@@ -660,16 +662,21 @@ header {
     display: flex;
 
     img {
-      width: 35vmax;
+      width: 35vw;
       position: relative;
       border-radius: 10px;
+
+      @media (max-width: 800px) {
+        border-radius: 4px;
+      }
     }
     @for $i from 1 through 10 {
       img:nth-of-type(#{$i}) {
-        margin-right: calc(-35vmax + calc(calc(9 - #{$i}) * 0.75vmax));
+        margin-right: calc(-35vw + calc(calc(9 - #{$i}) * 0.75vw));
         opacity: calc(calc(#{$i} + 1) * 0.1);
       }
     }
+    
     img:nth-of-type(9) {
       margin-right: 0 !important;
     }
@@ -685,24 +692,33 @@ header {
   text-transform: uppercase;
   isolation: isolate;
 
-  h2 {
+  h2, span[aria-hidden="true"] {
     position: absolute;
     font-weight: 900;
     font-size: 7rem;
-    z-index: -1;
+    z-index: 2;
+    mix-blend-mode: difference;
+    color: white;
+    pointer-events: none;
 
     @media (max-width: 800px) {
       font-size: 15vw;
     }
   }
+  span[aria-hidden="true"] {
+    z-index: -1;
+    mix-blend-mode: normal;
+  }
 
   #scroller {
-    position: relative;
+    position: absolute;
+    left: 5vmax;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0 15vw;
-    width: 100%;
-    height: 100%;
+    width: calc(100% - 10vmax);
+    height: 100vh;
+    overflow: hidden;
 
     .project {
       position: absolute;

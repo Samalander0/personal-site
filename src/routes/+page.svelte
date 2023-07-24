@@ -2,7 +2,7 @@
   import './styles.scss'
   import { onMount } from 'svelte';
 
-  import { book, open_book, arrow, emoji, artist, gear, school, brain, oldsites, boring, peek, petrichor, postcards, github, instagram, twitter, discord } from '$lib/images/images';
+  import { book, open_book, arrow, emoji, artist, gear, school, brain, oldsites, boring, peek, morado, postcards, github, instagram, twitter, discord } from '$lib/images/images';
   
   import Metatags from '$lib/components/Metatags.svelte';
   
@@ -41,11 +41,18 @@
   let smoother;
   let aboutTimeline = gsap.timeline();
   onMount(() => {
-    smoother = ScrollSmoother.create({
-      smooth: 0.5,
-      effects: true,  
-      smoothTouch: 0,
-    });
+    if (window.innerHeight >= 900) { // Only normalize scroll if mobile
+      smoother = ScrollSmoother.create({
+        smooth: 0.5,
+        effects: true,  
+      });
+    } else {
+      smoother = ScrollSmoother.create({
+        smooth: 0.5,
+        effects: true,  
+        normalizeScroll: true
+      });
+    }
 
     gsap.to("#header .line-1", {
       y: "10vh",
@@ -65,15 +72,17 @@
         scrub: 1,
       }
     })
-    gsap.to(".navbar", {
-      y: "25vh",
-      scrollTrigger: {
-        trigger: "#header",
-        start: "top top",
-        end: "top+=750 top",
-        scrub: true,
-      }
-    })
+    if (window.innerWidth > 1250) {
+      gsap.to(".navbar", {
+        y: "25vh",
+        scrollTrigger: {
+          trigger: "#header",
+          start: "top top",
+          end: "top+=750 top",
+          scrub: true,
+        }
+      })
+    }
     gsap.to("#arrow", {
       y: "2vh",
       scrollTrigger: {
@@ -164,20 +173,32 @@
       duration: 2
     })
     .from(".old-site", {
-      marginRight: "-35vmax",
+      marginRight: "-35vw",
       duration: 2,
     }, "<")
     .to("#about", {
       duration: 0.5
     })
-    ScrollTrigger.create({
-      trigger: "#about-scroll-section",
-      animation: aboutTimeline,
-      start: "top top",
-      end: "+=4000vh",
-      scrub: 0.5,
-      pin: true,
-    })  
+
+    if (window.innerHeight >= 900) {
+      ScrollTrigger.create({
+        trigger: "#about-scroll-section",
+        animation: aboutTimeline,
+        start: "top top",
+        end: "+=4000vh",
+        scrub: 0.5,
+        pin: true,
+      })  
+    } else {
+      ScrollTrigger.create({
+        trigger: "#about-scroll-section",
+        animation: aboutTimeline,
+        start: "top top",
+        end: "+=2000vh",
+        scrub: 0.5,
+        pin: true,
+      })  
+    }
   })
 </script>
 
@@ -295,6 +316,7 @@
   </div>
   <section id="projects" bind:this={projectsSection}>
     <h2>Projects</h2>
+    <span aria-hidden="true">Projects</span>
     <div id="scroller">
       <article class="project" bind:this={project1}>
         <a href="https://boring.samalander.dev/" target="_blank" rel="noreferrer" aria-label="go to featured website">
@@ -321,11 +343,11 @@
         </a>
       </article>
       <article class="project" bind:this={project4}>
-        <a href="https://www.petrichorgames.com/" target="_blank" rel="noreferrer" aria-label="go to featured website">
-          <img src={petrichor} alt="petrichor website screenshot"/>
+        <a href="https://mora.do/" target="_blank" rel="noreferrer" aria-label="go to featured website">
+          <img src={morado} alt="petrichor website screenshot"/>
         </a>
-        <a href="https://www.petrichorgames.com/" target="_blank" rel="noreferrer" class="project-title">
-          <h3>Petrichor Games</h3>
+        <a href="https://mora.do/" target="_blank" rel="noreferrer" class="project-title">
+          <h3>Morado Development</h3>
         </a>
       </article>
     </div>
