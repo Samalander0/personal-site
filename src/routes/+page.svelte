@@ -219,9 +219,9 @@
       <span class="wrapper stories-wrapper">
         <span id="stories" class="highlight content">
           <span class="text">stories</span>
-          <img src={book} alt="book emoji" class="emoji"/>
-          <img src={open_book} alt="open book emoji" class="emoji"/>
-          <img src={book} alt="book emoji" class="emoji"/>
+          <img src={book} alt="book emoji" class="emoji" aria-hidden="true"/>
+          <img src={open_book} alt="open book emoji" class="emoji" aria-hidden="true"/>
+          <img src={book} alt="book emoji" class="emoji" aria-hidden="true"/>
         </span> 
       </span>
       <span class="wrapper">
@@ -235,7 +235,7 @@
       <span class="wrapper yours-wrapper">
         <span id="yours" class="highlight content" on:mouseenter={rollEmoji} on:mouseleave={clearInterval(interval)}>
           <span class="text">yours</span>
-          <img src={currentEmoji} class="emoji" alt="emoji"/>
+          <img src={currentEmoji} class="emoji" alt="emoji" aria-hidden="true"/>
         </span>
       </span>
     </span>
@@ -256,7 +256,7 @@
             I'm a 
             <span class="highlight" style="color: #FDD641;">
               <span class="highlight-content">
-                <img src={artist} alt="artist emoji"/>
+                <img src={artist} alt="artist emoji" aria-hidden="true"/>
                 Digital Designer
               </span>
             </span>
@@ -265,7 +265,7 @@
           <span class="line line-2">
             <span class="highlight" style="color: #CDC4D6;">
               <span class="highlight-content">
-                <img src={gear} alt="gear emoji"/>
+                <img src={gear} alt="gear emoji" aria-hidden="true"/>
                 Web Developer
               </span>
             </span>
@@ -274,7 +274,7 @@
           <span class="line line-3">
             <span class="highlight" style="color: #FFCE7C;">
               <span class="highlight-content">
-                <img src={school} alt="school emoji"/>
+                <img src={school} alt="school emoji" aria-hidden="true"/>
                 Student
               </span>
             </span>
@@ -287,7 +287,7 @@
           <span class="line line-5">
             <span class="highlight" style="color: #FF6DC6;">
               <span class="highlight-content">
-                <img src={brain} alt="brain emoji"/>
+                <img src={brain} alt="brain emoji" aria-hidden="true"/>
                 Problem Solver
               </span>
             </span>
