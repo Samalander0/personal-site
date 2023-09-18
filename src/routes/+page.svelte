@@ -2,7 +2,7 @@
   import './styles.scss'
   import { onMount } from 'svelte';
 
-  import { book, open_book, arrow, emoji, artist, gear, school, brain, oldsites, boring, peek, morado, postcards, github, instagram, twitter, discord } from '$lib/images/images';
+  import { book, open_book, arrow, emoji, artist, gear, school, brain, oldsites, boring, habitual, morado, postcards, github, instagram, twitter, discord } from '$lib/images/images';
   
   import Metatags from '$lib/components/Metatags.svelte';
   
@@ -312,14 +312,6 @@
     <h2>Projects</h2>
     <span aria-hidden="true">Projects</span>
     <div id="scroller">
-      <article class="project" bind:this={project1}>
-        <a href="https://boring.samalander.dev/" target="_blank" rel="noreferrer" aria-label="go to featured website">
-          <img src={boring} alt="[boring] website screenshot"/>
-        </a>
-        <a href="https://boring.samalander.dev/" target="_blank" rel="noreferrer" class="project-title">
-          <h3>[Boring]</h3>
-        </a>
-      </article>
       <article class="project" bind:this={project2}>
         <a href="https://postcard.samalander.dev/" target="_blank" rel="noreferrer" aria-label="go to featured website">
           <img src={postcards} alt="digital postcard website screenshot"/>
@@ -329,11 +321,11 @@
         </a>
       </article>
       <article class="project" bind:this={project3}>
-        <a href="https://peekfriends.com/" target="_blank" rel="noreferrer" aria-label="go to featured website">
-          <img src={peek} alt="peek website screenshot"/>
+        <a href="https://www.habitual.studio/" target="_blank" rel="noreferrer" aria-label="go to featured website">
+          <img src={habitual} alt="habitual website screenshot"/>
         </a>
-        <a href="https://peekfriends.com/" target="_blank" rel="noreferrer" class="project-title">
-          <h3>Peek</h3>
+        <a href="https://www.habitual.studio/" target="_blank" rel="noreferrer" class="project-title">
+          <h3>Habitual</h3>
         </a>
       </article>
       <article class="project" bind:this={project4}>
@@ -342,6 +334,14 @@
         </a>
         <a href="https://mora.do/" target="_blank" rel="noreferrer" class="project-title">
           <h3>Morado Development</h3>
+        </a>
+      </article>
+      <article class="project" bind:this={project1}>
+        <a href="https://boring.samalander.dev/" target="_blank" rel="noreferrer" aria-label="go to featured website">
+          <img src={boring} alt="[boring] website screenshot"/>
+        </a>
+        <a href="https://boring.samalander.dev/" target="_blank" rel="noreferrer" class="project-title">
+          <h3>[Boring]</h3>
         </a>
       </article>
     </div>

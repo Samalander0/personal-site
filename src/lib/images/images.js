@@ -84,8 +84,8 @@ export const oldsites = [
 
 // Projects Screenshots
 import boring from './projects/boring.webp';
-import peek from './projects/peek.webp';
+import habitual from './projects/habitual.webp';
 import morado from './projects/morado.webp';
 import postcards from './projects/postcards.webp';
 
-export {boring, peek, morado, postcards};
+export {boring, habitual, morado, postcards};
